@@ -2,6 +2,9 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Kanit|Lato&display=swap" rel="stylesheet">
     <title>Play</title>
 
     <style>
@@ -9,6 +12,7 @@
             margin: 0;
             padding: 0;
             height: 100vh;
+            font-family: 'Lato', sans-serif;
         }
 
         .container {
@@ -21,131 +25,222 @@
             justify-content: center;
             align-items: center;
             flex-flow: column;
+
+            z-index: 1;
         }
 
-        .container img {
+
+        img.cover-album {
             box-shadow: 0 0 4px #12121248;
-            border-radius: 3px;
+            border-radius: 4px;
+        }
+
+        img.coverhover {
+            filter: brightness(0.3);
+            transition: all .5s ease-in-out;
         }
 
         div.text-content {
             text-align: center;
         }
+
+        img.btn-play {
+            position: absolute;
+            width: 100px;
+            z-index: 2;
+            filter: invert();
+            opacity: 0.5;
+        }
+
+        .conceal {
+            visibility: hidden !important;
+        }
+
+        .wrap-btnplay {
+            position: absolute;
+            margin: 0;
+            width: 100%;
+            height: 42em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .wrap-btnplay {
+                height: 42em;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div id="btnbtnplay" onclick="playNotes(melody2, 1 / 8)" class="wrap-btnplay cover-play conceal">
+        <img class="btn-play" style="" src="6903814_preview.png" alt="btn-play" onmouseenter="showButton()">
+    </div>
     <div class="container">
-        <img src="https://upload.wikimedia.org/wikipedia/en/0/01/Taylor_Swift_-_Love_Story.png">
+        <div class="wrap-cover" onmouseenter="showButton()" onmouseout="concealButton()">
+            <img id="imgcover" class="cover-album"
+                src="https://upload.wikimedia.org/wikipedia/en/0/01/Taylor_Swift_-_Love_Story.png">
+        </div>
         <div class="text-content">
-            <div style="color: white; font-family: 'Kanit'; letter-spacing: 2px; padding-top:10px; line-height: 40px">
-                <div style="color: white; font-family: 'Kanit'; letter-spacing: 2px; font-size: 40px;">Love Story</div>
-                <div style="color: rgb(205, 205, 205); font-family: 'Kanit'; letter-spacing: 2px; font-size: 20px;">
+            <div style="color: white;  letter-spacing: 2px; padding-top:10px; line-height: 32px">
+                <div style="color: white;  letter-spacing: 2px; font-size: 20px;">Love Story</div>
+                <div style="color: rgb(205, 205, 205);  letter-spacing: 2px; font-size: 14px;">
                     Taylor Swift
                 </div>
             </div>
         </div>
-        <button id="play" onclick="playNotes(melody2, 1 / 8)">
-            Play
-        </button>
-        <script type="text/javascript">
-            let [C4, D4b, D4, E4b, E4, F4, G4b, G4, A4b, A4, B4b, B4] = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-                13, 14
-            ];
-            let [C5, D5b, D5, E5b, E5, F5, G5b, G5, A5b, A5, B5b, B5] = [15, 16, 17, 18, 19, 20, 21, 22, 23,
-                24, 25, 26
-            ];
-            let [C6, D6b, D6, E6b, E6, F6, G6b, G6, A6b, A6, B6b, B6] = [27, 28, 29, 30, 31, 32, 33, 34, 35,
-                36, 37, 38
-            ];
-            let [C7, D7b, D7, E7b, E7, F7, G7b, G7, A7b, A7, B7b, B7] = [39, 40, 41, 42, 43, 44, 45, 46, 47,
-                48, 49, 50
-            ];
+    </div>
 
-            let melody2 = [
-                E4, -1, F4, -1, F4, -1, -1, -1, F4, -1, -1, -1,
-                F4, -1, -1, -1, E4, -1, -1, F4, -1, -1, G4, -1, -1,
-                F4, -1, -1, -1, -1, -1, -1, F4, -1, -1, E4, -1, -1, -1,
-                F4, -1, -1, -1, F4, -1, -1, -1, F4, -1, -1, F4, -1, -1,
-                E4, -1, -1, F4, -1, -1, -1, G4, -1, -1, F4, -1, E4, -1,
-                F4, -1, D4, -1, -1, -1, -1, -1, -1, -1, -1, -1, F4, -1, -1,
-                F4, -1, -1, F4, -1, -1, E4, -1, -1, E4, -1, C4, -1, -1,
-                C4, -1, D4, -1, -1, -1, -1, -1, -1, E4, -1, F4, -1,
-                F4, -1, -1, F4, -1, -1, -1, F4, -1, -1, -1, E4, -1, -1,
-                F4, -1, -1, F4, -1, -1, G4, -1, -1, F4
-            ]
+    <!-- Puttimate -->
+    <div id="btnbtnplay2" onclick="playNotes(melody3, 1 / 8)" class="wrap-btnplay cover-play conceal">
+        <img class="btn-play" style="" src="6903814_preview.png" alt="btn-play" onmouseenter="showButton2()">
+    </div>
+    <div class="container" style="background-image: linear-gradient(rgb(255, 106, 121), rgb(57, 0, 6));">
+        <div class="wrap-cover" onmouseenter="showButton2()" onmouseout="concealButton2()">
+            <img id="imgcover2" class="cover-album" width="300"
+                src="https://images.squarespace-cdn.com/content/v1/5a3601d5a9db096124a0a4af/1541277732165-XIL07M125Q6ZZSTVBHF6/ke17ZwdGBToddI8pDm48kJ1KTK3L-2CPblwbbOUE3-l7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0g9xiYCO_4ze-uEG5pWlE5Or5bTys-nI7fj3zlHWn3kq6tcxMDxzCle7pouS1z8Xmw/Album+cover.jpg">
+        </div>
+        <div class="text-content">
+            <div style="color: white;  letter-spacing: 2px; padding-top:10px; line-height: 32px">
+                <div style="color: white;  letter-spacing: 2px; font-size: 20px;">Jingle Bells</div>
+                <div style="color: rgb(205, 205, 205);  letter-spacing: 2px; font-size: 14px;">
+                    Christmas Songs
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        let [C4, D4b, D4, E4b, E4, F4, G4b, G4, A4b, A4, B4b, B4] = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+            13, 14
+        ];
+        let [C5, D5b, D5, E5b, E5, F5, G5b, G5, A5b, A5, B5b, B5] = [15, 16, 17, 18, 19, 20, 21, 22, 23,
+            24, 25, 26
+        ];
+        let [C6, D6b, D6, E6b, E6, F6, G6b, G6, A6b, A6, B6b, B6] = [27, 28, 29, 30, 31, 32, 33, 34, 35,
+            36, 37, 38
+        ];
+        let [C7, D7b, D7, E7b, E7, F7, G7b, G7, A7b, A7, B7b, B7] = [39, 40, 41, 42, 43, 44, 45, 46, 47,
+            48, 49, 50
+        ];
 
-            let melody = [
-                -1, -1, -1, A5, -1, -1, A5, C6, -1, C6, -1, -1,
-                -1, G5, -1, F5, -1, F5, -1, G5, -1, A5, -1, -1, -1,
-                -1, -1, B5b, -1, -1, B5b, B5b, -1, A5, -1, -1,
-                -1, G5, -1, F5, -1, -1, F5, F5, -1, E5, -1, -1, -1,
+        let melody2 = [
+            E4, -1, F4, -1, F4, -1, -1, -1, F4, -1, -1, -1,
+            F4, -1, -1, -1, E4, -1, -1, F4, -1, -1, G4, -1, -1,
+            F4, -1, -1, -1, -1, -1, -1, F4, -1, -1, E4, -1, -1, -1,
+            F4, -1, -1, -1, F4, -1, -1, -1, F4, -1, -1, F4, -1, -1,
+            E4, -1, -1, F4, -1, -1, -1, G4, -1, -1, F4, -1, E4, -1,
+            F4, -1, D4, -1, -1, -1, -1, -1, -1, -1, -1, -1, F4, -1, -1,
+            F4, -1, -1, F4, -1, -1, E4, -1, -1, E4, -1, C4, -1, -1,
+            C4, -1, D4, -1, -1, -1, -1, -1, -1, E4, -1, F4, -1,
+            F4, -1, -1, F4, -1, -1, -1, F4, -1, -1, -1, E4, -1, -1,
+            F4, -1, -1, F4, -1, -1, G4, -1, -1, F4
+        ]
 
-                -1, -1, -1, A5, -1, -1, A5, C6, -1, C6, -1, -1,
-                -1, G5, -1, F5, -1, -1, F5, G5, -1, A5, -1, -1, -1,
-                -1, -1, B5b, -1, -1, B5b, B5b, -1, A5, -1, -1,
-                -1, G5, -1, F5, -1, -1, F5, F5, -1, E5, -1, -1,
+        let melody3 = [
+            E5, -1, E5, -1, E5, -1, -1, -1, E5, -1, E5, -1, E5, -1, -1, -1, E5, -1, G5, -1,
+            C5, -1, D5, -1, E5, -1, -1, -1, -1, -1, -1, F5, -1, F5, -1, F5, -1, -1, F5, F5,
+            -1, E5, E5, -1, E5, E5, -1, E5, -1, D5, -1, D5, -1, E5, -1, D5, -1, -1, G5, -1,
+            E5, -1, E5, -1, E5, -1, -1, -1, -1, E5, -1, E5, -1, E5, -1, -1, -1, E5, -1, G5,
+            -1, C5, -1, -1, -1, D5, -1, E5, -1, -1, -1, F5, -1, F5, -1, F5, -1, F5, F5, -1,
+            E5, E5, -1, G5, -1, G5, , -1, F5, -1, D5, C5
+        ]
 
-                -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
-                F5, G5, -1, A5, -1, A5, -1, G5, -1, F5, -1, -1,
-                -1, -1, -1, C6, -1, -1, B5b, C6, -1, A5, -1, -1,
-                -1, -1, -1, F5, -1, -1, -1, D5, -1, E5, -1, -1,
+        let melody = [
+            -1, -1, -1, A5, -1, -1, A5, C6, -1, C6, -1, -1,
+            -1, G5, -1, F5, -1, F5, -1, G5, -1, A5, -1, -1, -1,
+            -1, -1, B5b, -1, -1, B5b, B5b, -1, A5, -1, -1,
+            -1, G5, -1, F5, -1, -1, F5, F5, -1, E5, -1, -1, -1,
 
-                -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
-                F5, G5, -1, A5, -1, A5, -1, G5, -1, F5, -1, -1,
-                -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
-                -1, A5, -1, B5b, -1, A5, -1, B5b, -1, C6, -1, -1, -1,
+            -1, -1, -1, A5, -1, -1, A5, C6, -1, C6, -1, -1,
+            -1, G5, -1, F5, -1, -1, F5, G5, -1, A5, -1, -1, -1,
+            -1, -1, B5b, -1, -1, B5b, B5b, -1, A5, -1, -1,
+            -1, G5, -1, F5, -1, -1, F5, F5, -1, E5, -1, -1,
 
-                -1, -1, -1, -1,
+            -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
+            F5, G5, -1, A5, -1, A5, -1, G5, -1, F5, -1, -1,
+            -1, -1, -1, C6, -1, -1, B5b, C6, -1, A5, -1, -1,
+            -1, -1, -1, F5, -1, -1, -1, D5, -1, E5, -1, -1,
 
-                -1, C6, -1, A5, -1, -1, A5, C6, -1, C6, -1, -1,
-                -1, G5, -1, F5, -1, F5, -1, G5, -1, A5, -1, -1, -1,
-                -1, -1, B5b, -1, -1, B5b, B5b, B5b, A5, -1, -1,
-                -1, G5, -1, F5, -1, F5, -1, F5, -1, E5, -1, -1, -1,
+            -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
+            F5, G5, -1, A5, -1, A5, -1, G5, -1, F5, -1, -1,
+            -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
+            -1, A5, -1, B5b, -1, A5, -1, B5b, -1, C6, -1, -1, -1,
 
-                -1, -1, -1, A5, -1, -1, A5, C6, -1, C6, -1, -1,
-                G5, G5, -1, F5, -1, F5, F5, G5, G5, A5, -1, -1, -1,
-                -1, -1, B5b, -1, -1, B5b, B5b, -1, A5, -1, -1,
-                -1, F5, F5, F5, -1, F5, -1, F5, -1, E5, -1, -1,
+            -1, -1, -1, -1,
 
-                -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
-                F5, G5, -1, A5, -1, A5, -1, G5, -1, F5, -1, -1,
-                -1, F5, -1, C6, -1, -1, B5b, C6, -1, A5, -1, -1,
-                -1, F5, F5, F5, -1, F5, -1, D5, -1, E5, -1, -1,
+            -1, C6, -1, A5, -1, -1, A5, C6, -1, C6, -1, -1,
+            -1, G5, -1, F5, -1, F5, -1, G5, -1, A5, -1, -1, -1,
+            -1, -1, B5b, -1, -1, B5b, B5b, B5b, A5, -1, -1,
+            -1, G5, -1, F5, -1, F5, -1, F5, -1, E5, -1, -1, -1,
 
-                -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
-                F5, G5, -1, A5, -1, A5, -1, G5, -1, F5, -1, -1,
-                -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
-                -1, A5, -1, B5b, -1, A5, -1, B5b, -1, C6, -1, -1, -1,
-            ]
+            -1, -1, -1, A5, -1, -1, A5, C6, -1, C6, -1, -1,
+            G5, G5, -1, F5, -1, F5, F5, G5, G5, A5, -1, -1, -1,
+            -1, -1, B5b, -1, -1, B5b, B5b, -1, A5, -1, -1,
+            -1, F5, F5, F5, -1, F5, -1, F5, -1, E5, -1, -1,
 
-            let playTone = (frequency, timeToPlay) => {
-                let audioContext = new(window.AudioContext || window.webkitAudioContext)()
-                let startTime = audioContext.currentTime
-                let oscillator = audioContext.createOscillator()
-                let gain = audioContext.createGain()
-                let noteLength = .5
-                oscillator.frequency.value = frequency
-                oscillator.type = 'sine'
-                oscillator.connect(gain)
-                gain.connect(audioContext.destination)
-                gain.gain.setValueAtTime(0.5, startTime + timeToPlay)
-                gain.gain.linearRampToValueAtTime(0, startTime + timeToPlay + noteLength)
-                oscillator.start(startTime + timeToPlay)
-                oscillator.stop(startTime + timeToPlay + noteLength)
-            }
-            const playNotes = (notes, secondsPerBeat) => {
+            -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
+            F5, G5, -1, A5, -1, A5, -1, G5, -1, F5, -1, -1,
+            -1, F5, -1, C6, -1, -1, B5b, C6, -1, A5, -1, -1,
+            -1, F5, F5, F5, -1, F5, -1, D5, -1, E5, -1, -1,
 
-                notes.forEach((noteNumber, index) => {
-                    if (noteNumber !== -1) {
-                        let frequency = 220 * 2 ** (noteNumber / 12)
-                        let beatToPlay = index + (index % 2) / 6
-                        let timeToPlay = beatToPlay * secondsPerBeat
-                        playTone(frequency, timeToPlay)
-                    }
-                })
-            }
-        </script>
+            -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
+            F5, G5, -1, A5, -1, A5, -1, G5, -1, F5, -1, -1,
+            -1, -1, -1, F5, -1, F5, -1, G5, -1, F5, -1, -1,
+            -1, A5, -1, B5b, -1, A5, -1, B5b, -1, C6, -1, -1, -1,
+        ]
+
+        let playTone = (frequency, timeToPlay) => {
+            let audioContext = new(window.AudioContext || window.webkitAudioContext)()
+            let startTime = audioContext.currentTime
+            let oscillator = audioContext.createOscillator()
+            let gain = audioContext.createGain()
+            let noteLength = .5
+            oscillator.frequency.value = frequency
+            oscillator.type = 'sine'
+            oscillator.connect(gain)
+            gain.connect(audioContext.destination)
+            gain.gain.setValueAtTime(0.5, startTime + timeToPlay)
+            gain.gain.linearRampToValueAtTime(0, startTime + timeToPlay + noteLength)
+            oscillator.start(startTime + timeToPlay)
+            oscillator.stop(startTime + timeToPlay + noteLength)
+        }
+        const playNotes = (notes, secondsPerBeat) => {
+
+            notes.forEach((noteNumber, index) => {
+                if (noteNumber !== -1) {
+                    let frequency = 220 * 2 ** (noteNumber / 12)
+                    let beatToPlay = index + (index % 2) / 6
+                    let timeToPlay = beatToPlay * secondsPerBeat
+                    playTone(frequency, timeToPlay)
+                }
+            })
+        }
+    </script>
+
+    <script>
+        function showButton() {
+            btnbtnplay.classList.remove('conceal');
+            imgcover.classList.add('coverhover');
+        }
+
+        function concealButton() {
+            btnbtnplay.classList.add('conceal');
+            imgcover.classList.remove('coverhover');
+        }
+
+        function showButton2() {
+            btnbtnplay2.classList.remove('conceal');
+            imgcover2.classList.add('coverhover');
+        }
+
+        function concealButton2() {
+            btnbtnplay2.classList.add('conceal');
+            imgcover2.classList.remove('coverhover');
+        }
+    </script>
 </body>
 
 </html>
